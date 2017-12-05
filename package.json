@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "api": "node ./bin/www",
+    "api": "node --inspect ./bin/www",
     "dev": "node dev-server.js",
     "build": "rimraf dist && webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint .",
