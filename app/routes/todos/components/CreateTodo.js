@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import * as rules from '../rules';
+import * as rules from '../../../rules/index';
 
 const handleFormSubmit = (nameInput, noteInput, onCreate) => {
     const name = nameInput.value;

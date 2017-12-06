@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import { Link } from 'react-router';
-import handleUpdateTodo from '../helpers/handleUpdateTodo';
+import handleUpdateTodo from '../../../helpers/handleUpdateTodo';
 
 const todoSource = {
     beginDrag(props) {

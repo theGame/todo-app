@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { withRouter } from 'react-router';
-import handleUpdateTodo from '../helpers/handleUpdateTodo';
-import withExit from '../helpers/withExit';
-import * as rules from '../rules';
+import handleUpdateTodo from '../../../helpers/handleUpdateTodo';
+import withExit from '../../../helpers/withExit';
+import * as rules from '../../../rules/index';
 
 const handleSave = (router, nameInput, noteInput, params) => {
     const newName = nameInput.value;
