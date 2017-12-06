@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { removeTodo, updateTodo } from '../actions';
-import TodoDetail from '../routes/todos/components/TodoDetail';
+import { removeTodo, updateTodo } from '../../../actions/index';
+import TodoDetail from './TodoDetail';
 
 const mapStateToProps = (state, props) => {
     const { index } = props.params;

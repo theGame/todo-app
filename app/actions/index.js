@@ -30,3 +30,10 @@ export function moveTodo(dragIndex, hoverIndex, todo) {
         todo
     };
 }
+
+export function loginUser(user) {
+    return {
+        type: types.LOGIN_USER_CLICK,
+        data: user
+    };
+}

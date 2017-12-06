@@ -29,7 +29,7 @@
     "jsx": true
   },
   "rules": {
-    "no-var": 2,                     // http://eslint.org/docs/rules/no-var
+    "no-var": 0,                     // http://eslint.org/docs/rules/no-var
     "prefer-const": 2,               // http://eslint.org/docs/rules/prefer-const
 
     /**
@@ -48,7 +48,7 @@
      * Possible errors
      */
     "no-cond-assign": [2, "always"], // http://eslint.org/docs/rules/no-cond-assign
-    "no-console": 0,                 // http://eslint.org/docs/rules/no-console
+    "no-console": 1,                 // http://eslint.org/docs/rules/no-console
     "no-debugger": 1,                // http://eslint.org/docs/rules/no-debugger
     "no-alert": 1,                   // http://eslint.org/docs/rules/no-alert
     "no-constant-condition": 1,      // http://eslint.org/docs/rules/no-constant-condition
@@ -66,7 +66,7 @@
     "no-sparse-arrays": 2,           // http://eslint.org/docs/rules/no-sparse-arrays
     "no-unreachable": 2,             // http://eslint.org/docs/rules/no-unreachable
     "use-isnan": 2,                  // http://eslint.org/docs/rules/use-isnan
-    "block-scoped-var": 2,           // http://eslint.org/docs/rules/block-scoped-var
+    "block-scoped-var": 0,           // http://eslint.org/docs/rules/block-scoped-var
 
     /**
      * Best practices
