@@ -1,14 +1,14 @@
-import "babel-polyfill";
-import expect from "expect";
-import { put, call } from 'redux-saga/effects'
-import * as sagas from "../app/actions/sagas";
-import * as types from "../app/actions/types";
+import 'babel-polyfill';
+import expect from 'expect';
+import { call } from 'redux-saga/effects';
+import * as sagas from '../app/actions/sagas';
+import * as types from '../app/actions/types';
 import { postTodo, deleteTodo, putTodo } from '../app/api';
 
 describe('redux sagas', () => {
     const todoModel = {
-        name: "test the todos",
-        note: "Testing todos"
+        name: 'test the todos',
+        note: 'Testing todos'
     };
 
     describe('add todo', () => {
@@ -27,10 +27,7 @@ describe('redux sagas', () => {
             postTodo(todoModel).then(todo => {
                 returnedTodoId = todo._id;
                 expect(generator.next(todo).value.PUT.action)
-                    .toEqual({
-                        type: types.ADD_TODO_SUCCESS,
-                        todo    
-                    });
+                    .toEqual({ type: types.ADD_TODO_SUCCESS, todo });
                 done();
             });
         });
@@ -44,14 +41,14 @@ describe('redux sagas', () => {
             deleteTodo(returnedTodoId)
                 .then(() => done())
                 .catch(e => {
-                    console.log('ERROR removing todo: '+e);
+                    console.log('ERROR removing todo: ' + e);
                     done();
                 });
-        })
+        });
     });
 
     describe('remove todo', () => {
-        let createdTodo, action, generator;
+        let createdTodo; let action; let generator;
 
         before('create a dummy todo and start the generator', (done) => {
             // create a dummy todo
@@ -63,10 +60,10 @@ describe('redux sagas', () => {
                 };
                 generator = sagas.removeTodo(action);
                 done();
-            })
+            });
         });
 
-        it ('should execute the call method and return the effect', () => {
+        it('should execute the call method and return the effect', () => {
             expect(generator.next().value).toEqual(call(deleteTodo, createdTodo._id));
         });
 
@@ -75,7 +72,7 @@ describe('redux sagas', () => {
                 expect(generator.next(todo).value.PUT.action)
                     .toEqual({
                         type: types.REMOVE_TODO_SUCCESS,
-                        todo    
+                        todo
                     });
                 done();
             });
@@ -87,7 +84,7 @@ describe('redux sagas', () => {
     });
 
     describe('update todo', () => {
-        let createdTodo, action, generator;
+        let createdTodo; let action; let generator;
 
         before('create a dummy todo and start the generator', (done) => {
             // create a dummy todo
@@ -103,10 +100,10 @@ describe('redux sagas', () => {
                 };
                 generator = sagas.updateTodo(action);
                 done();
-            })
+            });
         });
 
-        it ('should execute the call method and return the effect', () => {
+        it('should execute the call method and return the effect', () => {
             expect(generator.next().value).toEqual(call(putTodo, createdTodo._id, action.updates));
         });
 
@@ -131,11 +128,9 @@ describe('redux sagas', () => {
             deleteTodo(createdTodo._id)
                 .then(() => done())
                 .catch(e => {
-                    console.log('ERROR removing todo: '+e);
+                    console.log('ERROR removing todo: ' + e);
                     done();
                 });
-        })
-
+        });
     });
-
 });

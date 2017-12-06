@@ -1,15 +1,15 @@
-import expect from "expect";
-import * as actions from "../app/actions/index";
-import * as types from "../app/actions/types";
+import expect from 'expect';
+import * as actions from '../app/actions/index';
+import * as types from '../app/actions/types';
 
 describe('sync actions', () => {
     const todo = {
-        _id: "57d3ce8b66e5e92c16bc6528",
-        name: "test the todos",
-        updatedAt: "2016-09-11T09:21:57.834Z",
-        note: "Testing todos",
+        _id: '57d3ce8b66e5e92c16bc6528',
+        name: 'test the todos',
+        updatedAt: '2016-09-11T09:21:57.834Z',
+        note: 'Testing todos',
         completed: false
-    }
+    };
 
     describe('addTodo', () => {
         it('should create an action to add a todo', () => {
@@ -18,18 +18,18 @@ describe('sync actions', () => {
                 data: todo
             };
             expect(actions.addTodo(todo)).toEqual(expectedAction);
-        })
+        });
     });
 
     describe('removeTodo', () => {
         it('should create an action to remove a todo', () => {
-            const id = "someid123";
+            const id = 'someid123';
             const expectedAction = {
                 type: types.REMOVE_TODO_CLICK,
                 id
             };
             expect(actions.removeTodo(id)).toEqual(expectedAction);
-        })
+        });
     });
 
     describe('moveTodo', () => {
@@ -44,12 +44,12 @@ describe('sync actions', () => {
             };
             expect(actions.moveTodo(dragIndex, hoverIndex, todo))
                 .toEqual(expectedAction);
-        })
+        });
     });
 
     describe('updateTodo', () => {
         it('should create an action to update a todo', () => {
-            const id = "someid123";
+            const id = 'someid123';
             const updates = { completed: false };
             const expectedAction = {
                 type: types.UPDATE_TODO_CLICK,
@@ -58,7 +58,6 @@ describe('sync actions', () => {
             };
             expect(actions.updateTodo(id, updates))
                 .toEqual(expectedAction);
-        })
+        });
     });
-
 });
