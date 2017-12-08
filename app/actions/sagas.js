@@ -1,5 +1,4 @@
-import { takeEvery } from 'redux-saga';
-import { put, call } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import { postTodo, deleteTodo, putTodo } from '../api';
 import * as types from './types';
 
