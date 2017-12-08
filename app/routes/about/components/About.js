@@ -8,7 +8,6 @@ const About = () =>
         	<iframe
         		src="https://ghbtns.com/github-btn.html?user=jpsierens&repo=todo-app&type=star&size=large"
         		frameBorder="0"
-				allowTransparency="true"
 				scrolling="0">
 			</iframe>
         </div>

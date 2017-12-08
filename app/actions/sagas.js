@@ -29,7 +29,7 @@ export function* addTodo(action) {
 }
 
 function* watchAddTodo() {
-    yield* takeEvery(types.ADD_TODO_CLICK, addTodo);
+    yield takeEvery(types.ADD_TODO_CLICK, addTodo);
 }
 
 export function* removeTodo(action) {
@@ -51,7 +51,7 @@ export function* removeTodo(action) {
 }
 
 function* watchRemoveTodo() {
-    yield* takeEvery(types.REMOVE_TODO_CLICK, removeTodo);
+    yield takeEvery(types.REMOVE_TODO_CLICK, removeTodo);
 }
 
 export function* updateTodo(action) {
@@ -75,7 +75,7 @@ export function* updateTodo(action) {
 }
 
 function* watchUpdateTodo() {
-    yield* takeEvery(types.UPDATE_TODO_CLICK, updateTodo);
+    yield takeEvery(types.UPDATE_TODO_CLICK, updateTodo);
 }
 
 // single entry point to start all Sagas at once
