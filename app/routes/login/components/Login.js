@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Form, FormGroup, FormControl, Checkbox, Button, ControlLabel } from 'react-bootstrap';
 
 const Login = ({  }) => {
