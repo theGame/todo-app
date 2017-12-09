@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
 const TODOS_URL = 'http://localhost:3001/todos';
+const LOGIN_URL = 'http://localhost:3001/login';
 const jsonHeaders = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
@@ -60,6 +61,26 @@ export async function deleteTodo(id) {
         };
 
         const response = await fetch(`${ TODOS_URL }/${id}`, options);
+
+        return await response.json();
+    } catch(e) {
+        throw e;
+    }
+}
+
+export async function loginUser(email, password) {
+    try {
+        const options = {
+            mode: 'cors',
+            method: 'POST',
+            headers: jsonHeaders,
+            body: JSON.stringify({
+                email,
+                password
+            })
+        };
+
+        const response = await fetch(LOGIN_URL, options);
 
         return await response.json();
     } catch(e) {

@@ -4,12 +4,14 @@ import Login from './Login';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onUserLogin: (user) => dispatch(loginUser(user))
+        onUserLogin: (email, password) => dispatch(loginUser(email, password))
     };
 };
 
 const LoginContainer = connect(
+    null,
     mapDispatchToProps
 )(Login);
 
 export default LoginContainer;
+

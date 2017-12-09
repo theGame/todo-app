@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Form, FormGroup, FormControl, Checkbox, Button, ControlLabel } from 'react-bootstrap';
+import { withRouter } from 'react-router';
 
-const Login = ({  }) => {
+const handleLogin = (email, password, loginAction) => {
+    loginAction(email.value, password.value);
+    // this.props.history.push('/');
+    // TODO: create wrapper component here in order to have props inside and do redirect and save data if user admin or not
+};
+
+const Login = ({ onUserLogin }) => {
+    let email;
+    let password;
     return (
         <Form horizontal>
             <FormGroup controlId="formHorizontalEmail">
@@ -10,7 +19,7 @@ const Login = ({  }) => {
                     Email
                 </Col>
                 <Col sm={10}>
-                    <FormControl type="email" placeholder="Email" />
+                    <FormControl type="email" placeholder="Email" inputRef={ e => { email = e; }} />
                 </Col>
             </FormGroup>
 
@@ -19,7 +28,9 @@ const Login = ({  }) => {
                     Password
                 </Col>
                 <Col sm={10}>
-                    <FormControl type="password" placeholder="Password" />
+                    <FormControl type='password'
+                                 placeholder='Password'
+                                 inputRef={ p => { password = p; }} />
                 </Col>
             </FormGroup>
 
@@ -31,7 +42,10 @@ const Login = ({  }) => {
 
             <FormGroup>
                 <Col smOffset={2} sm={10}>
-                    <Button type="submit">
+                    <Button type='submit' onClick={ (e) => {
+                        e.preventDefault();
+                        handleLogin(email, password, onUserLogin);
+                    }}>
                         Sign in
                     </Button>
                 </Col>
@@ -44,4 +58,4 @@ Login.propTypes = {
     onUserLogin: PropTypes.func
 };
 
-export default Login;
+export default withRouter(Login);
