@@ -8,11 +8,18 @@ router.post('/', (req, res, next) => {
     User.find({role: userRole.admin}).exec( (err, users) => {
         if (err) return next(err);
 
-        Object.keys(users).forEach((key) => {
-            if (users[key].email === req.body.email && users[key].password === req.body.password) {
-                res.json({message: 'loginned!'});
+        let response = 0;
+        for(const user of users) {
+            if (user.email === req.body.email && user.password === req.body.password) {
+                response++;
             }
-        });
+        }
+
+        if (response) {
+            res.json({message: 'Loginned!'});
+        } else {
+            res.json({message: 'Not found such user!'});
+        }
     });
 });
 

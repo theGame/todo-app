@@ -12,10 +12,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onAddTodo: (todo) => dispatch(addTodo(todo)),
         onRemoveTodo: (id) => dispatch(removeTodo(id)),
-        updateTodo: (id, updates) =>
-            dispatch(updateTodo(id, updates)),
-        moveTodo: (dragIndex, hoverIndex, todo) =>
-            dispatch(moveTodo(dragIndex, hoverIndex, todo))
+        updateTodo: (id, updates) => dispatch(updateTodo(id, updates)),
+        moveTodo: (dragIndex, hoverIndex, todo) => dispatch(moveTodo(dragIndex, hoverIndex, todo))
     };
 };
 

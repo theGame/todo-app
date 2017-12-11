@@ -3,59 +3,62 @@ import PropTypes from 'prop-types';
 import { Col, Form, FormGroup, FormControl, Checkbox, Button, ControlLabel } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 
-const handleLogin = (email, password, loginAction) => {
-    loginAction(email.value, password.value);
-    // this.props.history.push('/');
-    // TODO: create wrapper component here in order to have props inside and do redirect and save data if user admin or not
-};
+class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
 
-const Login = ({ onUserLogin }) => {
-    let email;
-    let password;
-    return (
-        <Form horizontal>
-            <FormGroup controlId="formHorizontalEmail">
-                <Col componentClass={ControlLabel} sm={2}>
-                    Email
-                </Col>
-                <Col sm={10}>
-                    <FormControl type="email" placeholder="Email" inputRef={ e => { email = e; }} />
-                </Col>
-            </FormGroup>
+        this._handleLoginUser = this._handleLoginUser.bind(this);
+    }
 
-            <FormGroup controlId="formHorizontalPassword">
-                <Col componentClass={ControlLabel} sm={2}>
-                    Password
-                </Col>
-                <Col sm={10}>
-                    <FormControl type='password'
-                                 placeholder='Password'
-                                 inputRef={ p => { password = p; }} />
-                </Col>
-            </FormGroup>
+    render() {
+        return (
+            <Form horizontal>
+                <FormGroup controlId="formHorizontalEmail">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        Email
+                    </Col>
+                    <Col sm={10}>
+                        <FormControl type="email" placeholder="Email" inputRef={ e => { this.email = e; }} />
+                    </Col>
+                </FormGroup>
 
-            <FormGroup>
-                <Col smOffset={2} sm={10}>
-                    <Checkbox>Remember me</Checkbox>
-                </Col>
-            </FormGroup>
+                <FormGroup controlId="formHorizontalPassword">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        Password
+                    </Col>
+                    <Col sm={10}>
+                        <FormControl type='password' placeholder='Password' inputRef={ p => { this.password = p; }} />
+                    </Col>
+                </FormGroup>
 
-            <FormGroup>
-                <Col smOffset={2} sm={10}>
-                    <Button type='submit' onClick={ (e) => {
-                        e.preventDefault();
-                        handleLogin(email, password, onUserLogin);
-                    }}>
-                        Sign in
-                    </Button>
-                </Col>
-            </FormGroup>
-        </Form>
-    );
-};
+                <FormGroup>
+                    <Col smOffset={2} sm={10}>
+                        <Checkbox>Remember me</Checkbox>
+                    </Col>
+                </FormGroup>
+
+                <FormGroup>
+                    <Col smOffset={2} sm={10}>
+                        <Button type='submit' onClick={this._handleLoginUser}>
+                            Sign in
+                        </Button>
+                    </Col>
+                </FormGroup>
+            </Form>
+        );
+    }
+
+    _handleLoginUser(e) {
+        e.preventDefault();
+        this.props.onUserLogin(this.email.value, this.password.value);
+    }
+}
 
 Login.propTypes = {
-    onUserLogin: PropTypes.func
+    onUserLogin: PropTypes.func,
+    message: PropTypes.string,
+    isLoading: PropTypes.bool
 };
 
 export default withRouter(Login);

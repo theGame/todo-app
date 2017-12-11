@@ -34,7 +34,21 @@ const todos = (state = [], action) => {
     }
 };
 
+const login = (state = [], action) => {
+    switch (action.type) {
+        case types.LOGIN_USER_SUCCESS:
+            return [action.todo, ...state];
+
+        case types.LOGIN_USER_FAILED:
+            return [action.todo, ...state];
+
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
+    login,
     todos,
     routing
 });

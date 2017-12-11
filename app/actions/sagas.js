@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, put, call, all } from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import { postTodo, deleteTodo, putTodo, loginUser } from '../api';
 import * as types from './types';
 
@@ -99,7 +99,7 @@ export function* loginUserGen(action) {
 }
 
 function* watchLoginUser() {
-    yield takeLatest(types.LOGIN_USER_CLICK, loginUserGen);
+    yield takeEvery(types.LOGIN_USER_CLICK, loginUserGen);
 }
 
 // single entry point to start all Sagas at once

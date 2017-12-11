@@ -18,7 +18,7 @@ const adminUser = new User({
     firstName: 'Yuriy',
     lastName: 'Voytas',
     email: '',
-    password: '',
+    password: '111',
     role: userRole.admin
 });
 console.log(User);

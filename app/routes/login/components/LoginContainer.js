@@ -7,9 +7,15 @@ const mapDispatchToProps = (dispatch) => {
         onUserLogin: (email, password) => dispatch(loginUser(email, password))
     };
 };
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.isLoading,
+        message: state.message,
+    };
+};
 
 const LoginContainer = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Login);
 
