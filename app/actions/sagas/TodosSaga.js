@@ -3,7 +3,7 @@ import { postTodo, deleteTodo, putTodo, getTodos } from './../../api';
 import * as types from './../types';
 
 function* handleServerResponse(todo, success, failed, errorMsg, additional = {}) {
-    if (todo && todo.name) {
+    if (todo && todo.name || todo.length) {
         yield put(Object.assign({}, { type: success, todo }, additional));
     } else {
         yield put({ type: failed, error: errorMsg });
@@ -81,9 +81,9 @@ export function* getTodosGen() {
 
         yield handleServerResponse(
             todos,
-            types.UPDATE_TODO_SUCCESS,
-            types.UPDATE_TODO_FAILED,
-            'NETWORK ERROR: Todo status wasn\'t updated',
+            types.GET_TODOS_SUCCESS,
+            types.GET_TODOS_FAILED,
+            'NETWORK ERROR: Todos wasn\'t updated',
         );
     } catch(e) {
         yield put({

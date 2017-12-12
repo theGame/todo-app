@@ -5,6 +5,9 @@ import * as types from '../actions/types';
 
 const todos = (state = [], action) => {
     switch (action.type) {
+        case types.GET_TODOS_SUCCESS:
+            return action.todo;
+
         case types.ADD_TODO_SUCCESS:
             return [action.todo, ...state];
 
