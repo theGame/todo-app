@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import expect from 'expect';
 import { call } from 'redux-saga/effects';
-import * as sagas from '../app/actions/sagas';
+import * as sagas from '../app/actions/sagas/RootSagas';
 import * as types from '../app/actions/types';
 import { postTodo, deleteTodo, putTodo } from '../app/api';
 

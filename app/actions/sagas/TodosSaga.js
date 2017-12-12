@@ -1,6 +1,6 @@
-import { takeEvery, put, call, all } from 'redux-saga/effects';
-import { postTodo, deleteTodo, putTodo, loginUser } from '../api';
-import * as types from './types';
+import { takeEvery, put, call } from 'redux-saga/effects';
+import { postTodo, deleteTodo, putTodo } from './../../api';
+import * as types from './../types';
 
 function* handleServerResponse(todo, success, failed, errorMsg, additional = {}) {
     if (todo && todo.name) {
@@ -28,7 +28,7 @@ export function* addTodo(action) {
     }
 }
 
-function* watchAddTodo() {
+export function* watchAddTodo() {
     yield takeEvery(types.ADD_TODO_CLICK, addTodo);
 }
 
@@ -50,7 +50,7 @@ export function* removeTodo(action) {
     }
 }
 
-function* watchRemoveTodo() {
+export function* watchRemoveTodo() {
     yield takeEvery(types.REMOVE_TODO_CLICK, removeTodo);
 }
 
@@ -74,40 +74,6 @@ export function* updateTodo(action) {
     }
 }
 
-function* watchUpdateTodo() {
+export function* watchUpdateTodo() {
     yield takeEvery(types.UPDATE_TODO_CLICK, updateTodo);
-}
-
-export function* loginUserGen(action) {
-    try {
-        const { email, password } = action;
-        const user = yield call(loginUser, email, password);
-
-        yield handleServerResponse(
-            user,
-            types.LOGIN_USER_SUCCESS,
-            types.LOGIN_USER_FAILED,
-            'NETWORK ERROR: Todo status wasn\'t updated',
-            { user }
-        );
-    } catch(e) {
-        yield put({
-            type: types.LOGIN_USER_FAILED,
-            error: e
-        });
-    }
-}
-
-function* watchLoginUser() {
-    yield takeEvery(types.LOGIN_USER_CLICK, loginUserGen);
-}
-
-// single entry point to start all Sagas at once
-export default function* rootSaga() {
-    yield all([
-        call(watchAddTodo),
-        call(watchRemoveTodo),
-        call(watchUpdateTodo),
-        call(watchLoginUser)
-    ]);
 }
