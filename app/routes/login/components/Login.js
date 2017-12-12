@@ -4,11 +4,19 @@ import { Col, Form, FormGroup, FormControl, Checkbox, Button, ControlLabel } fro
 import { withRouter } from 'react-router';
 
 class Login extends React.Component {
+
+
     constructor(props) {
         super(props);
         this.state = {};
 
         this._handleLoginUser = this._handleLoginUser.bind(this);
+    }
+
+    componentWillReceiveProps(newProps, props) {
+        console.log('componentWillReceiveProps');
+        console.log(newProps);
+        console.log(props);
     }
 
     render() {

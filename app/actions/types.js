@@ -1,3 +1,4 @@
+export const GET_TODOS = 'GET_TODOS';
 export const ADD_TODO_CLICK = 'ADD_TODO_CLICK';
 export const ADD_TODO_REQUEST = 'ADD_TODO_REQUEST';
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS';

@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as actions from '../app/actions/index';
+import * as actions from '../app/actions/actionCreator';
 import * as types from '../app/actions/types';
 
 describe('sync actions', () => {

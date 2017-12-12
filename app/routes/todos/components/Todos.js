@@ -12,6 +12,9 @@ const handleMoveTodo = (todos, moveTodo, indexes) => {
 };
 
 class Todos extends React.Component {
+    componentDidMount() {
+        this.props.getTodos();
+    }
     render() {
         const { todos, onAddTodo, onRemoveTodo, updateTodo, moveTodo } = this.props;
 
@@ -37,6 +40,7 @@ class Todos extends React.Component {
 }
 
 Todos.propTypes = {
+    getTodos: PropTypes.func,
     todos: PropTypes.array,
     onAddTodo: PropTypes.func,
     onRemoveTodo: PropTypes.func,

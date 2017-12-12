@@ -1,5 +1,9 @@
 import * as types from './types';
 
+export function getTodo() {
+    return { type: types.GET_TODOS};
+}
+
 export function addTodo(todo) {
     return { type: types.ADD_TODO_CLICK, data: todo };
 }

@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { postTodo, deleteTodo, putTodo } from './../../api';
+import { postTodo, deleteTodo, putTodo, getTodos } from './../../api';
 import * as types from './../types';
 
 function* handleServerResponse(todo, success, failed, errorMsg, additional = {}) {
@@ -27,7 +27,6 @@ export function* addTodo(action) {
         });
     }
 }
-
 export function* watchAddTodo() {
     yield takeEvery(types.ADD_TODO_CLICK, addTodo);
 }
@@ -49,7 +48,6 @@ export function* removeTodo(action) {
         });
     }
 }
-
 export function* watchRemoveTodo() {
     yield takeEvery(types.REMOVE_TODO_CLICK, removeTodo);
 }
@@ -73,7 +71,27 @@ export function* updateTodo(action) {
         });
     }
 }
-
 export function* watchUpdateTodo() {
     yield takeEvery(types.UPDATE_TODO_CLICK, updateTodo);
+}
+
+export function* getTodosGen() {
+    try {
+        const todos = yield call(getTodos);
+
+        yield handleServerResponse(
+            todos,
+            types.UPDATE_TODO_SUCCESS,
+            types.UPDATE_TODO_FAILED,
+            'NETWORK ERROR: Todo status wasn\'t updated',
+        );
+    } catch(e) {
+        yield put({
+            type: types.UPDATE_TODO_FAILED,
+            error: e
+        });
+    }
+}
+export function* watchGetTodos() {
+    yield takeEvery(types.GET_TODOS, getTodosGen);
 }
