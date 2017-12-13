@@ -19,10 +19,10 @@ router.post('/', (req, res, next) => {
 
         if (err) return next(err);
 
-        if (!user) return res.status(404).send('Not found such user!');
+        if (!user.length) return res.status(404).send('Not found such user!');
 
         req.session.user = user;
-        return res.status(200).send('Loginned');
+        return res.status(200).json({message: 'Loginned'});
     });
 });
 

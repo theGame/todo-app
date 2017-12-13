@@ -40,13 +40,13 @@ const todos = (state = [], action) => {
 const login = (state = [], action) => {
     switch (action.type) {
         case types.LOGIN_USER_CLICK:
-            return [action.todo, {...state, login: {message: '', isLoading: true}}];
+            return {message: '', isLoading: true};
 
         case types.LOGIN_USER_SUCCESS:
-            return [action.todo, {...state, login: {message: 'Successfully loginned', isLoading: false}}];
+            return {message: 'Successfully loginned', isLoading: false};
 
         case types.LOGIN_USER_FAILED:
-            return [action.todo, {...state, login: {message: 'Login failed!', isLoading: false} }];
+            return {message: 'Login failed!', isLoading: false};
 
         default:
             return state;

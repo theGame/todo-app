@@ -1,0 +1,70 @@
+.todo-detail {
+  input,
+  textarea {
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #AAA;
+  }
+  input {
+    height: 20px;
+  }
+  .btn-save {
+    display: block;
+    float: right;
+    margin-top: 10px;
+  }
+}
+
+.todo {
+  position: relative;
+  margin: 10px 0;
+  padding: 10px 45px 10px 10px;
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &>a {
+    text-decoration: none;
+  }
+  h2 {
+    margin: 10px 0;
+    color: #111;
+    font-size: 20px;
+  }
+  p {
+    margin: 10px 0;
+    color: #2f2f2f;
+  }
+  .datetime {
+    margin-left: 20px;
+    color: gray;
+    font-style: italic;
+  }
+  .close-todo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+  &.done {
+    background: #cefdb1;
+  }
+  &.dragging {
+    opacity: 0.2;
+  }
+}
+
+
+.create-todo {
+  input,
+  textarea {
+    height: 20px;
+    margin: 5px 5px;
+    padding: 3px;
+  }
+}
+
+.todos {
+  padding: 20px 0;
+  background-color: beige;
+}

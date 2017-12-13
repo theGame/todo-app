@@ -8,9 +8,10 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 const mapStateToProps = (state) => {
+    const { isLoading, message } = state.login;
     return {
-        isLoading: state.isLoading,
-        message: state.message,
+        isLoading,
+        message
     };
 };
 

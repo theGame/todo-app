@@ -7,15 +7,7 @@ import configureStore from './store/configureStore';
 import Root from './containers/Root';
 import './styles/main.scss';
 
-const initialStore = {
-    todos: [],
-    login: {
-        message: '',
-        isLoading: false
-    }
-};
-
-const store = configureStore({ initialStore });
+const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(

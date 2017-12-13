@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Form, FormGroup, FormControl, Checkbox, Button, ControlLabel } from 'react-bootstrap';
+import { Col, Form, FormGroup, FormControl, HelpBlock, Button, ControlLabel } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 
 class Login extends React.Component {
-
-
     constructor(props) {
         super(props);
         this.state = {};
@@ -13,15 +11,13 @@ class Login extends React.Component {
         this._handleLoginUser = this._handleLoginUser.bind(this);
     }
 
-    componentWillReceiveProps(newProps, props) {
-        console.log('componentWillReceiveProps');
-        console.log(newProps);
-        console.log(props);
-    }
-
     render() {
+        const { isLoading, message } = this.props;
         return (
-            <Form horizontal>
+            <Form horizontal className="login-form-wrapper">
+
+                { isLoading ? <section className="loader">&nbsp;</section> : null }
+
                 <FormGroup controlId="formHorizontalEmail">
                     <Col componentClass={ControlLabel} sm={2}>
                         Email
@@ -42,17 +38,13 @@ class Login extends React.Component {
 
                 <FormGroup>
                     <Col smOffset={2} sm={10}>
-                        <Checkbox>Remember me</Checkbox>
-                    </Col>
-                </FormGroup>
-
-                <FormGroup>
-                    <Col smOffset={2} sm={10}>
                         <Button type='submit' onClick={this._handleLoginUser}>
                             Sign in
                         </Button>
                     </Col>
                 </FormGroup>
+
+                {message ? <HelpBlock>{message}</HelpBlock> : null}
             </Form>
         );
     }
