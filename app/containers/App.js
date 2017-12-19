@@ -11,7 +11,7 @@ const App = ({ children }) => {
             <footer>
                 <Link to={routes.ROOT}>Todos</Link>
                 <Link to={routes.ABOUT}>About</Link>
-                <Link to={routes.LOGIN}>Login</Link>
+                <Link to={routes.SIGNIN}>Login</Link>
             </footer>
         </div>
     );

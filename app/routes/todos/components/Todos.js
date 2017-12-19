@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Todo from './Todo';
 import CreateTodo from './CreateTodo';
@@ -11,7 +11,7 @@ const handleMoveTodo = (todos, moveTodo, indexes) => {
     return moveTodo(dragIndex, hoverIndex, todos[dragIndex]);
 };
 
-class Todos extends React.Component {
+class Todos extends Component {
     componentDidMount() {
         this.props.getTodos();
     }

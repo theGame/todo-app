@@ -1,5 +1,6 @@
 module.exports = Object.freeze({
-    LOGIN: '/login',
+    SIGNIN: '/signin',
+    SIGNUP: '/signup',
     ABOUT: '/about',
     ROOT: '/',
     INDEX: '/:index'

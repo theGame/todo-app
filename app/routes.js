@@ -11,7 +11,7 @@ export default (
     <Route path={routes.ROOT} component={App}>
         <IndexRoute component={TodosContainer} />
         <Route path={routes.ABOUT} component={About} />
-        <Route path={routes.LOGIN} component={LoginContainer} />
+        <Route path={routes.SIGNIN} component={LoginContainer} />
         <Route path={routes.INDEX} component={TodoDetailContainer} />
     </Route>
 );

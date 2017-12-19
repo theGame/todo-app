@@ -54,6 +54,7 @@ footer {
   border-top: 16px solid #3498db;
   width: 120px;
   height: 120px;
+  transition: visibility 0s, opacity 0.5s linear;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
 }

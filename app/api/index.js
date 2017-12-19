@@ -1,7 +1,8 @@
 import fetch from 'isomorphic-fetch';
 
 const TODOS_URL = 'http://localhost:3001/todos';
-const LOGIN_URL = 'http://localhost:3001/login';
+const SIGNIN = 'http://localhost:3001/auth/signin';
+// const SIGNOUT = 'http://localhost:3001/auth/signup';
 const jsonHeaders = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
@@ -80,7 +81,7 @@ export async function loginUser(email, password) {
             })
         };
 
-        const response = await fetch(LOGIN_URL, options);
+        const response = await fetch(SIGNIN, options);
 
         return await response.json();
     } catch(e) {

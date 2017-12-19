@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const todos = require('./routes/todos');
-const login = require('./routes/login');
+const sign = require('./routes/sign');
 
 const app = express();
 
@@ -25,14 +25,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-    secret: 'df46asd5476d5f7f7s74',
+    secret: 'learnMore',
     resave: false,
     saveUninitialized: true
 }));
 app.use(cors());
 
 app.use('/todos', todos);
-app.use('/login', login);
+app.use('/auth/', sign);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
