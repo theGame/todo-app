@@ -4,15 +4,9 @@ import { Col, Form, FormGroup, FormControl, HelpBlock, Button, ControlLabel } fr
 import { withRouter } from 'react-router';
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-
-        this._handleLoginUser = this._handleLoginUser.bind(this);
-    }
-
     render() {
         const { isLoading, message } = this.props;
+
         return (
             <Form horizontal className="login-form-wrapper">
 
@@ -49,7 +43,7 @@ class Login extends Component {
         );
     }
 
-    _handleLoginUser(e) {
+    _handleLoginUser = (e) => {
         e.preventDefault();
         this.props.onUserLogin(this.email.value, this.password.value);
     }

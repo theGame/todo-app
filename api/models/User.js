@@ -7,22 +7,26 @@ const UserSchema = new mongoose.Schema({
     firstName: String,
     lastName: {
         type: String,
-        default: ''
+        require: true
     },
     password: {
         type: String,
-        default: ''
+        require: true
     },
     email: {
         type: String,
-        default: ''
+        require: true
     },
     role: {
         type: Number,
-        default: userRole.visitor
+        default: userRole.visitor,
+        require: true
     }
 });
+const User = mongoose.model('User', UserSchema);
 
+
+// todo: method .pre is a middleware and we should create separate folder with file middlewares
 UserSchema.pre('save', (next) => {
     const user = this;
     bcrypt.hash(user.password, 10, (err, hash) => {
@@ -34,15 +38,15 @@ UserSchema.pre('save', (next) => {
     });
 });
 
-UserSchema.statics.authenticate = (email, password, callback) => {
+UserSchema.authenticate = (email, password, callback) => {
     User.findOne({ email: email })
         .exec( (err, user) => {
             if (err) {
                 return callback(err);
             } else if (!user) {
-                let err = new Error('User not found.');
-                err.status = 401;
-                return callback(err);
+                const noUserError = new Error('User not found.');
+                noUserError.status = 401;
+                return callback(noUserError);
             }
             bcrypt.compare(password, user.password, (err, result) => {
                 if (result === true) {
@@ -54,7 +58,8 @@ UserSchema.statics.authenticate = (email, password, callback) => {
         });
 };
 
-module.exports = mongoose.model('User', UserSchema);
+UserSchema.comparePassword = (pass) => bcrypt.compareSync(pass, this.password);
+module.exports = User;
 
 
 /* // added admin user to bd

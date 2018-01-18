@@ -21,15 +21,15 @@ router.post('/signin', (req, res, next) => {
         if (!user.length) return res.status(404).send('Not found such user!');
 
         req.session.user = user;
-        return res.status(200).json({message: 'Loginned'});
+        return res.status(200)
+            .cookie('cookiename', 'cookievalue', { maxAge: 3600000 * 14 * 24, httpOnly: false })
+            .json({message: 'Loginned'});
     });
 });
-
 
 router.post('/signup', (req, res) => {
     const body = req.body;
     if (body.email && body.firstName && body.lastName && body.password) {
-
         const userData = {
             firstName: body.firstName,
             lastName: body.lastName,

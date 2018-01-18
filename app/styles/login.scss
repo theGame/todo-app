@@ -1,3 +1,8 @@
 .login-form-wrapper{
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  right: 50%;
+  transform: translate(-50%, -50%);
 }

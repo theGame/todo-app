@@ -5,7 +5,8 @@ const SIGNIN = 'http://localhost:3001/auth/signin';
 // const SIGNOUT = 'http://localhost:3001/auth/signup';
 const jsonHeaders = {
     'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'credentials': 'same-origin'
 };
 
 export async function getTodos() {
