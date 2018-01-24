@@ -62,34 +62,33 @@ module.exports = {
     },
 
     module: {
-        // Runs before loaders
-        preLoaders: [
+        rules: [
             {
+                enforce: 'pre',
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'eslint'
-            }
-        ],
-        // loaders handle the assets, like transforming sass to css or jsx to js.
-        loaders: [{
-            test: /\.js?$/,
-            exclude: /node_modules/,
-            loader: 'babel'
-        }, {
-            test: /\.json?$/,
-            loader: 'json'
-        }, {
-            test: /\.scss$/,
-            // we extract the styles into their own .css file instead of having
-            // them inside the js.
-            loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
-        },{
-            test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: "url-loader?limit=10000&minetype=application/font-woff"
-        },{
-            test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: "file-loader"
-        }]
+                use: 'eslint-loader'
+            },
+            {
+                test: /\.js?$/,
+                use: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.json?$/,
+                use: 'json'
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader', 'sass-loader']
+                })
+            },
+            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: "url-loader?limit=10000&minetype=application/font-woff" },
+            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: "file-loader" }
+        ]
     },
     postcss: [
         require('autoprefixer')
